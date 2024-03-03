@@ -1,0 +1,10 @@
+div#main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 40vw;
+}
+
+textarea#ingredients {
+    width: 40vw;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baking Conversion Calculator</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="main">
+        <div id="ingredient-input">
+            <span>Ingredients, format as grams, ingredient name</span>
+            <textarea name="ingredients" id="ingredients" cols="30" rows="10"></textarea>
+            <button type="button" onclick="submit()">Calculate!</button>
+        </div>
+        <div id="ingredient-have">
+            <span>Conversion ingredient</span>
+            <textarea name="conversionIngredient" id="conversionIngredient" cols="20" rows="1"></textarea>
+        </div>
+        <div>
+            <p>New Recipe:</p>
+            <ul id="recipe"></ul>
+        </div>
+    </div>
+</body>
+</html>
