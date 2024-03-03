@@ -6,10 +6,6 @@ var NAME = 1;
 
 var inputtedIngredients = ""
 
-function calculate() {
-    
-}
-
 function submit() {
     inputtedIngredients = document.getElementById("ingredients").value.split('\n');
     conversionIngredient = document.getElementById("conversionIngredient").value.split(',');
@@ -23,10 +19,18 @@ function submit() {
         }
     }
     for (let i = 0; i < ingredients.length; i++) {
-        const node = document.createElement("li")
+        const node = document.createElement("li");
         ingredients[i][GRAMS] *= conversionFactor;
+        // rounding
+        ingredients[i][GRAMS] = Math.round(ingredients[i][GRAMS] * 100) / 100
         currIngredient = document.createTextNode(String(ingredients[i][GRAMS]) + "g of " + ingredients[i][NAME]);
-        node.appendChild(currIngredient)
+        
+        // check if already has ingredients in box
+        if (i == 0) {
+            recipeField.innerHTML = "";
+        }
+
+        node.appendChild(currIngredient);
         recipeField.appendChild(node);
     }
 }
