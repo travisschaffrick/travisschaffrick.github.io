@@ -6,11 +6,21 @@
     <meta http-equiv='cache-control' content='no-cache'> 
     <meta http-equiv='expires' content='0'> 
     <meta http-equiv='pragma' content='no-cache'>
-    <title>Baking Conversion Calculator</title>
-    <script src="script.js"></script>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Recipe Conversion Calculator</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 </head>
 <body>
+    <div class="w-75">
+          <div class="m-5">
+            <label for="exampleFormControlTextarea1" class="form-label">Ingredients, formatted as: Amount, Unit, Ingredient</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+           
+          <div class="m-5">
+              <label for="exampleFormControlInput1" class="form-label">Desired amount of conversion ingredient, Ingredient</label>
+              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            </div>
+    </div>
     <div class="container">
         <div id="ingredient-input">
             <span>Ingredients, format as grams, ingredient name</span>
@@ -21,7 +31,8 @@
             <textarea name="conversionIngredient" id="conversionIngredient" cols="30" rows="1" placeholder="Grams, Ingredient to base conversion on"></textarea>
         </div>
         <div id="calculate-button">
-            <button type="button" onclick="submit()">Calculate!</button>
+            <button type="button" onclick="submit_by_ingredient()">Calculate!</button>
+            <button type="button" onclick="submit_by_given_conversion()">Calculate!</button>
         </div>
         <div id="recipe-area">
             <p>New Recipe:</p>
@@ -29,4 +40,6 @@
         </div>
     </div>
 </body>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="script.js"></script>
 </html>
