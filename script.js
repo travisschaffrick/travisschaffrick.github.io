@@ -36,8 +36,23 @@ function populate() {
             conversionFactor = Number(document.getElementById("multiple").value);
         }
     }
-
 }
+
+function verify_output() {
+    // Ensure there are ingredients before outputting
+    console.log("ran")
+    console.log(conversionFactor);
+    console.log("ingredients: " + ingredients)
+    
+    if (conversionFactor == -1 || isNaN(conversionFactor)) {
+        recipeField.innerHTML = "No Scaling Factor";
+    }
+
+    if (inputtedIngredients == "") {
+        recipeField.innerHTML = "No Ingredients";
+    }
+}
+
 
 function submit_by_ingredient() {
     // Setup
@@ -64,6 +79,7 @@ function submit_by_ingredient() {
         node.appendChild(currIngredient);
         recipeField.appendChild(node);
     }
+    verify_output();
 }
 
 function submit_by_given_multiple() {
@@ -89,4 +105,5 @@ function submit_by_given_multiple() {
         node.appendChild(currIngredient);
         recipeField.appendChild(node);
     }
+    verify_output();
 }
