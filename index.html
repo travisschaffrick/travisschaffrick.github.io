@@ -10,37 +10,29 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 </head>
 <body>
+    <h1 class="mt-1">Recipe Converter</h1>
     <div class="w-75">
-          <div class="m-5">
-            <label for="exampleFormControlTextarea1" class="form-label">Ingredients, formatted as: Amount, Unit, Ingredient</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="
-                454, grams, Flour &#10
-                3, cups, Water &#10
-                1, servings"></textarea>
-          </div>
+            <div class="m-5">
+                <label for="exampleFormControlTextarea1" class="form-label">Ingredients, formatted as: Amount, Unit, Ingredient</label>
+                <textarea name="ingredients" id="ingredients" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="454, grams, Flour &#10 3, cups, Water &#10 22, litres, yield"></textarea>
+            </div>
            
-          <div class="m-5">
-              <label for="exampleFormControlInput1" class="form-label">Desired amount of conversion ingredient, Ingredient</label>
-              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="2, servings">
+            <div class="m-5">
+                <label for="exampleFormControlInput1" class="form-label">Desired amount of conversion ingredient</label>
+                <input name="conversionIngredient" id="conversionIngredient" class="form-control" id="exampleFormControlInput1" placeholder="44, yield">
+                <button class="mt-3 btn btn-primary" type="button" onclick="submit_by_ingredient()">Calculate by Ingredient</button>
+            </div>
+            <div class="m-5">
+                
+                <label for="exampleFormControlInput1" class="form-label">Multiply recipe by</label>
+                <input name="multiple" id="multiple" class="form-control" id="exampleFormControlInput1" placeholder="0.5">
+                <button class="mt-3 btn btn-primary" type="button" onclick="submit_by_given_multiple()">Calculate by conversion</button>
             </div>
     </div>
-    <div class="container">
-        <div id="ingredient-input">
-            <span>Ingredients, format as grams, ingredient name</span>
-            <textarea name="ingredients" id="ingredients" cols="30" rows="10" placeholder="Grams, Ingredient 1 &#10Grams, Ingredient 2"></textarea>
-        </div>
-        <div id="ingredient-have">
-            <span>Conversion ingredient</span>
-            <textarea name="conversionIngredient" id="conversionIngredient" cols="30" rows="1" placeholder="Grams, Ingredient to base conversion on"></textarea>
-        </div>
-        <div id="calculate-button">
-            <button type="button" onclick="submit_by_ingredient()">Calculate!</button>
-            <button type="button" onclick="submit_by_given_conversion()">Calculate!</button>
-        </div>
-        <div id="recipe-area">
-            <p>New Recipe:</p>
-            <ul id="recipe"></ul>
-        </div>
+
+    <div class="m-5" id="recipe-area">
+        <p>New Recipe:</p>
+        <ul id="recipe"></ul>
     </div>
 </body>
 <script src="bootstrap/js/bootstrap.min.js"></script>
