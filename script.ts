@@ -204,19 +204,24 @@ function submitByMultiple(): void {
 }
 
 function displayScaledIngredients(): void {
+    recipeField!.innerHTML = "";  // Clear old output
+
     for (let i = 0; i < ingredients.length; i++) {
         const node = document.createElement("li");
-        ingredients[i][AMOUNT_INPUT] *= conversionFactor;
-        let amount = Math.round(ingredients[i][AMOUNT_INPUT] * 100) / 100;
-        const displayAmount = Number.isInteger(amount) ? amount.toString() : amount.toFixed(2);
+
+        // Calculate scaled amount without modifying original
+        const scaledAmount = ingredients[i][AMOUNT_INPUT] * conversionFactor;
+
+        // Round to 2 decimals
+        const amountRounded = Math.round(scaledAmount * 100) / 100;
+        const displayAmount = Number.isInteger(amountRounded) ? amountRounded.toString() : amountRounded.toFixed(2);
 
         const currIngredient = document.createTextNode(
             `${displayAmount} ${ingredients[i][UNIT_INPUT]} of ${ingredients[i][INGREDIENT_INPUT]}`
         );
 
         node.appendChild(currIngredient);
-        if (recipeField == null) return;
-        recipeField.appendChild(node);
+        recipeField!.appendChild(node);
     }
 }
 

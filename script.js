@@ -31,7 +31,7 @@ function populate() {
     ingredients = [];
     conversionFactor = -1;
     for (var i = 0; i < inputtedIngredients.length; i++) {
-        var raw = inputtedIngredients[i].split(',');
+        var raw = inputtedIngredients[i].split(',').map(function (s) { return s.trim(); });
         if (raw.length !== 3)
             continue;
         var amount = Number(raw[AMOUNT_INPUT]);
@@ -63,7 +63,7 @@ function submitByIngredient() {
     if (!ingredientsField || !conversionField || !recipeField)
         return;
     inputtedIngredients = ingredientsField.value.split('\n');
-    var rawConversion = conversionField.value.split(',');
+    var rawConversion = conversionField.value.split(',').map(function (s) { return s.trim(); });
     if (rawConversion.length === 2 && !isNaN(Number(rawConversion[0]))) {
         conversionIngredient = [Number(rawConversion[0]), rawConversion[1]];
     }
@@ -138,14 +138,16 @@ function submitByMultiple() {
         downloadBtn.style.display = "inline-block";
 }
 function displayScaledIngredients() {
+    recipeField.innerHTML = ""; // Clear old output
     for (var i = 0; i < ingredients.length; i++) {
         var node = document.createElement("li");
-        ingredients[i][AMOUNT_INPUT] *= conversionFactor;
-        ingredients[i][AMOUNT_INPUT] = Math.round(ingredients[i][AMOUNT_INPUT] * 100) / 100;
-        var currIngredient = document.createTextNode("".concat(ingredients[i][AMOUNT_INPUT], " ").concat(ingredients[i][UNIT_INPUT], " of ").concat(ingredients[i][INGREDIENT_INPUT]));
+        // Calculate scaled amount without modifying original
+        var scaledAmount = ingredients[i][AMOUNT_INPUT] * conversionFactor;
+        // Round to 2 decimals
+        var amountRounded = Math.round(scaledAmount * 100) / 100;
+        var displayAmount = Number.isInteger(amountRounded) ? amountRounded.toString() : amountRounded.toFixed(2);
+        var currIngredient = document.createTextNode("".concat(displayAmount, " ").concat(ingredients[i][UNIT_INPUT], " of ").concat(ingredients[i][INGREDIENT_INPUT]));
         node.appendChild(currIngredient);
-        if (recipeField == null)
-            return;
         recipeField.appendChild(node);
     }
 }
