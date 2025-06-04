@@ -5,7 +5,9 @@ This is a simple tool meant for converting recipes.
 
 ## 1. Ingredients
 454, grams, Flour
+
 3, cups, Water
+
 22, litres, yield
 ## 2. Choose how to scale
 - Scale by ingredient
