@@ -5,6 +5,7 @@ This is a simple tool meant for converting recipes.
 
 ## 1. Ingredients
 Ingredients are meant to be entered in the format of **amount, unit, ingredient**. It is important that the values are **comma-seperated** and in the *correct order*.
+
 454, grams, Flour
 
 3, cups, Water
